@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class HelperUser extends HelperBase{
     public HelperUser(WebDriver wd) {
         super(wd);
@@ -34,6 +36,13 @@ public void submitLogin(){
         click(By.cssSelector("button[type='submit']"));
 }
 
+    public boolean isLogged() {
+        return
+                isElementPresent(By.xpath("//a[@href='/logout?url=undefined']"));
+    }
 
 
+    public void logout() {
+        click(By.xpath("//a[@href='/logout?url=undefined']"));
+    }
 }

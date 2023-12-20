@@ -14,8 +14,8 @@ public class HelperBase {
     }
 
     public void click(By locator){
-        WebElement el = wd.findElement(locator);
-        el.click();
+        WebElement element = wd.findElement(locator);
+        element.click();
 
     }
      public void type(By locator, String text){
@@ -37,6 +37,11 @@ public class HelperBase {
              throw new RuntimeException(e);
          }
      }
+
+    public boolean isElementPresent(By locator){
+        List<WebElement> list = wd.findElements(locator);
+        return list.size() >0;
+    }
 
 
 
