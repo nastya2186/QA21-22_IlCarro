@@ -48,4 +48,13 @@ public class HelperBase {
     public String getMessage() {
         return wd.findElement(By.cssSelector(".dialog-container>h2")).getText();
     }
+
+    public boolean isYallaButtonNotActive() {
+        boolean res = isElementPresent(By.cssSelector("button[disabled]"));
+
+        WebElement element = wd.findElement(By.cssSelector("button[type='submit']"));
+        boolean result = element.isEnabled();
+        return res && !result;
+
+    }
 }

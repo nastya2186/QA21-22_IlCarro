@@ -18,10 +18,11 @@ public class HelperUser extends HelperBase{
 
     }
     public void clickOk(){
+        if(isElementPresent(By.xpath("//*[text()='Ok']")))
         click(By.xpath("//*[text()='Ok']"));
     }
 
-public void fillLogin(String email, String passport){
+public void fillLogin(String email, String password){
 //        WebElement emaill = wd.findElement(By.xpath("//*[@id = 'email']"));
 //        emaill.click();
 //        emaill.clear();
@@ -29,9 +30,17 @@ public void fillLogin(String email, String passport){
     type(By.xpath("//*[@id = 'email']"), email);
 
 
-    type(By.xpath("//*[@id = 'password']"), passport);
+    type(By.xpath("//*[@id = 'password']"), password);
 
 }
+
+
+    public void fillLogin(User user){
+//
+        type(By.xpath("//*[@id = 'email']"), user.);
+        type(By.xpath("//*[@id = 'password']"), password);
+
+    }
 public void submitLogin(){
         click(By.cssSelector("button[type='submit']"));
 }
@@ -45,4 +54,10 @@ public void submitLogin(){
     public void logout() {
         click(By.xpath("//a[@href='/logout?url=undefined']"));
     }
+
+    public String getErrorText() {
+        return wd.findElement(By.cssSelector("div.error")).getText();
+    }
+
+
 }
