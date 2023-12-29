@@ -6,6 +6,7 @@ public class User {
     private String email;
     private String password;
 
+
     public String getFirstName() {
         return firstName;
     }
@@ -24,18 +25,22 @@ public class User {
 
     public User setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public User setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     public User setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public User setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     @Override
