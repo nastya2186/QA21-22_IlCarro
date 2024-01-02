@@ -21,6 +21,6 @@ public class Car {
     private Integer seats;
     private String carClass;
     private String carRegNumber;
-    private Double price;
+    private double price;
     private String about;
 }

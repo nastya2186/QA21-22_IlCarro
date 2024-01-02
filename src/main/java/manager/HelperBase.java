@@ -18,6 +18,11 @@ public class HelperBase {
         element.click();
 
     }
+
+    public void submit(){
+
+        click(By.cssSelector("button[type='submit']"));
+    }
      public void type(By locator, String text){
         WebElement element = wd.findElement(locator);
         element.click();

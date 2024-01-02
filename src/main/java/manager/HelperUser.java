@@ -1,10 +1,10 @@
 package manager;
 
 import models.User;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 
+import javax.swing.*;
 import java.util.List;
 
 public class HelperUser extends HelperBase{
@@ -42,9 +42,7 @@ public void fillLogin(String email, String password){
         type(By.xpath("//*[@id = 'password']"), user.getPassword());
 
     }
-public void submit(){
-        click(By.cssSelector("button[type='submit']"));
-}
+
 
     public boolean isLogged() {
         return
@@ -75,6 +73,27 @@ public void submit(){
 
     public void checkPolicy() {
 
-        click(By.cssSelector("label[for ='terms-of-use']"));
+        //click(By.cssSelector("label[for ='terms-of-use']"));
+        JavascriptExecutor js = (JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('#terms-of-use').click()");
+
+
+    }
+
+    public void checkPolicyYX(){
+        WebElement label = wd.findElement(By.cssSelector("label[for ='terms-of-use']"));
+       Rectangle rect =  label.getRect();
+       int w = rect.getWidth();
+        int xOffSet= -w/2;
+        Actions action = new Actions(wd);
+        action.moveToElement(label,xOffSet,0).click().release().perform();
+
+    }
+
+    public void login(User user) {
+        openLoginForm();
+        fillLoginForm(user);
+        submit();
+        clickOk();
     }
 }

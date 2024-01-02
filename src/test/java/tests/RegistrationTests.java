@@ -1,6 +1,7 @@
 package tests;
 
 import models.User;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -26,8 +27,9 @@ public class RegistrationTests extends TestBase{
                 .setPassword("Snow123654$");
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
-        app.getHelperUser().checkPolicy();
+        app.getHelperUser().checkPolicyYX();
         app.getHelperUser().submit();
+        Assert.assertEquals(app.getHelperUser().getMessage(),"You are logged in success");
 
 
     }
