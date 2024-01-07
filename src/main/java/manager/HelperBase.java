@@ -1,6 +1,7 @@
 package manager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -27,12 +28,17 @@ public class HelperBase {
         WebElement element = wd.findElement(locator);
         element.click();
         element.clear();
+        clearNew(element);
         if (text != null){
             element.sendKeys(text);
 
         }
 
 
+     }
+     public void clearNew(WebElement element){
+        element.sendKeys(" ");
+        element.sendKeys(Keys.BACK_SPACE);
      }
 
      public void pause(int time){
@@ -51,6 +57,7 @@ public class HelperBase {
 
 
     public String getMessage() {
+
         return wd.findElement(By.cssSelector(".dialog-container>h2")).getText();
     }
 

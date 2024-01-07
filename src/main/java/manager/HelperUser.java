@@ -46,12 +46,12 @@ public void fillLogin(String email, String password){
 
     public boolean isLogged() {
         return
-                isElementPresent(By.xpath("//a[@href='/logout?url=undefined']"));
+                isElementPresent(By.xpath("//*[.=' Logout ']"));
     }
 
 
     public void logout() {
-        click(By.xpath("//a[@href='/logout?url=undefined']"));
+        click(By.xpath("//*[.=' Logout ']"));
     }
 
     public String getErrorText() {
@@ -80,14 +80,16 @@ public void fillLogin(String email, String password){
 
     }
 
-    public void checkPolicyYX(){
-        WebElement label = wd.findElement(By.cssSelector("label[for ='terms-of-use']"));
-       Rectangle rect =  label.getRect();
-       int w = rect.getWidth();
-        int xOffSet= -w/2;
-        Actions action = new Actions(wd);
-        action.moveToElement(label,xOffSet,0).click().release().perform();
+    public void checkPolicyYX() {
+        if (!wd.findElement(By.id("terms-of-use")).isSelected()) {
+            WebElement label = wd.findElement(By.cssSelector("label[for ='terms-of-use']"));
+            Rectangle rect = label.getRect();
+            int w = rect.getWidth();
+            int xOffSet = -w / 2;
+            Actions action = new Actions(wd);
+            action.moveToElement(label, xOffSet, 0).click().release().perform();
 
+        }
     }
 
     public void login(User user) {

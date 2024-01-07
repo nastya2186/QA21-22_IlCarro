@@ -2,6 +2,8 @@ package tests;
 
 import models.Car;
 import models.User;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -35,7 +37,11 @@ public class AddNewCarTests extends TestBase{
 
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
+        app.getHelperCar().attachPhoto("C:\\Users\\anastasia\\QA21_22\\QA21-22_IlCarro\\02-bugatti-cd-nardo-testing.jpg");
         app.getHelperCar().submit();
+        Assert.assertTrue(app.getHelperUser().getMessage().contains("added successful"));
+        Assert.assertEquals(app.getHelperUser().getMessage(),car.getManufacture() + " "+car.getModel()
+                +" added successful");
     }
 
     @Test
@@ -57,5 +63,15 @@ public class AddNewCarTests extends TestBase{
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
         app.getHelperCar().submit();
+        Assert.assertTrue(app.getHelperUser().getMessage().contains("added successful"));
+        Assert.assertEquals(app.getHelperUser().getMessage(),car.getManufacture() + " "+car.getModel()
+                +" added successful");
+    }
+
+
+    @AfterMethod
+    public void postConditions(){
+        app.getHelperCar().returnToHome();
+
     }
 }
