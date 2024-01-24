@@ -1,0 +1,3 @@
+23:20:17.884 INFO  tests.TestBase - Name of method    searchAnyPeriodSuccess
+23:20:23.215 INFO  tests.TestBase - Name of method    searchCurrentMonthSuccess
+23:20:43.365 INFO  tests.TestBase - Name of method    searchCurrentYearSuccess

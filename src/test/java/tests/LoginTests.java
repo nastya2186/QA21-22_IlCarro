@@ -57,6 +57,8 @@ public class LoginTests extends TestBase {
 
     @Test
     public void loginSuccessModel(){
+        logger.info("Start test with name LoginSuccess");
+        logger.info("Test data: Login -kim19@gmail.com, password - Kim192023# ");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLogin("kim19@gmail.com", "Kim192023#");
         app.getHelperUser().submit();
